@@ -120,7 +120,7 @@ skf = StratifiedKFold(n_splits=N_SPLITS, shuffle=True, random_state=RANDOM_STATE
 accs, f1s, aucs = [], [], []
 
 print("\n=== 5-fold results (per fold) ===")
-for fold, (tr_idx, te_idx) in enumerate(skf.split(X, y), start=1):
+for fold, (tr_idx, te_idx) in enumerate(skf.split(X_train, y_train), start=1):
     X_tr, X_te = X.iloc[tr_idx], X.iloc[te_idx]
     y_tr, y_te = y.iloc[tr_idx], y.iloc[te_idx]
 
@@ -148,3 +148,4 @@ print("\n=== 5-fold summary (mean ± std) ===")
 print(f"ACC: {np.mean(accs):.4f} ± {np.std(accs, ddof=1):.4f}")
 print(f"F1 : {np.mean(f1s):.4f} ± {np.std(f1s, ddof=1):.4f}")
 print(f"AUC: {np.mean(aucs):.4f} ± {np.std(aucs, ddof=1):.4f}")
+
